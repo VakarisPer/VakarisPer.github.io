@@ -1464,3 +1464,62 @@ section,
 .starter-section {
   /* Add your styles here */
 }
+/*--------------------------------------------------------------
+# Services: lentelė, sąrašai ir medija (LD8)
+--------------------------------------------------------------*/
+.services .services-subtitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.services .services-table {
+  --bs-table-color: var(--default-color);
+  --bs-table-bg: var(--surface-color);
+  --bs-table-striped-color: var(--default-color);
+  --bs-table-striped-bg: color-mix(in srgb, var(--default-color), transparent 94%);
+  --bs-table-hover-color: var(--heading-color);
+  --bs-table-hover-bg: color-mix(in srgb, var(--default-color), transparent 88%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  margin-bottom: 0;
+}
+
+.services .services-table thead th {
+  background-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  color: var(--heading-color);
+  font-weight: 600;
+}
+
+.services .services-table td:last-child,
+.services .services-table th:last-child {
+  white-space: nowrap;
+}
+
+.services .services-list li {
+  padding: 4px 0;
+}
+
+.services .services-list ul,
+.services .services-list ol {
+  margin-top: 4px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.services .services-media-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.services .services-media {
+  width: 100%;
+  height: auto;
+  background: #000;
+  border-radius: 6px;
+}
+
+.services .services-audio {
+  width: 100%;
+  max-width: 640px;
+}
