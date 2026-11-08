@@ -653,33 +653,74 @@
           </div>
 
           <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
+            <!-- Kontaktų forma (LD11) – apdorojama assets/js/custom.js -->
+            <form id="contact-form" class="php-email-form cv-form" novalidate data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-3">
 
                 <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Jūsų vardas" required="">
+                  <label for="f-vardas" class="form-label">Vardas *</label>
+                  <input type="text" id="f-vardas" name="vardas" class="form-control" placeholder="Vardenis" autocomplete="given-name" required>
+                  <div class="field-error" id="f-vardas-error"></div>
                 </div>
 
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Jūsų el. paštas" required="">
+                <div class="col-md-6">
+                  <label for="f-pavarde" class="form-label">Pavardė *</label>
+                  <input type="text" id="f-pavarde" name="pavarde" class="form-control" placeholder="Pavardenis" autocomplete="family-name" required>
+                  <div class="field-error" id="f-pavarde-error"></div>
                 </div>
 
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Tema" required="">
+                <div class="col-md-6">
+                  <label for="f-email" class="form-label">El. paštas *</label>
+                  <input type="email" id="f-email" name="email" class="form-control" placeholder="vardenis@pastas.lt" autocomplete="email" required>
+                  <div class="field-error" id="f-email-error"></div>
                 </div>
 
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Žinutė" required=""></textarea>
+                <div class="col-md-6">
+                  <label for="f-telefonas" class="form-label">Telefono numeris *</label>
+                  <input type="tel" id="f-telefonas" name="telefonas" class="form-control" placeholder="+370 6xx xxxxx" inputmode="numeric" autocomplete="tel" required>
+                  <div class="field-error" id="f-telefonas-error"></div>
                 </div>
 
-                <div class="col-md-12 text-center">
-                  <div class="loading">Siunčiama</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Žinutė išsiųsta. Ačiū!</div>
-
-                  <button type="submit">Siųsti žinutę</button>
+                <div class="col-12">
+                  <label for="f-adresas" class="form-label">Adresas *</label>
+                  <input type="text" id="f-adresas" name="adresas" class="form-control" placeholder="Gatvė 1, Vilnius" autocomplete="street-address" required>
+                  <div class="field-error" id="f-adresas-error"></div>
                 </div>
 
+                <div class="col-12">
+                  <p class="form-section-title">Įvertinkite nuo 1 iki 10 *</p>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="f-q1" class="form-label">Kaip vertinate svetainės dizainą?</label>
+                  <input type="number" id="f-q1" name="q1" class="form-control" min="1" max="10" step="1" placeholder="1–10" required>
+                  <div class="field-error" id="f-q1-error"></div>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="f-q2" class="form-label">Ar lengva rasti reikiamą informaciją?</label>
+                  <input type="number" id="f-q2" name="q2" class="form-control" min="1" max="10" step="1" placeholder="1–10" required>
+                  <div class="field-error" id="f-q2-error"></div>
+                </div>
+
+                <div class="col-md-4">
+                  <label for="f-q3" class="form-label">Kiek tikėtina, kad mane rekomenduotumėte?</label>
+                  <input type="number" id="f-q3" name="q3" class="form-control" min="1" max="10" step="1" placeholder="1–10" required>
+                  <div class="field-error" id="f-q3-error"></div>
+                </div>
+
+                <div class="col-12 form-buttons">
+                  <button type="submit" id="f-submit" disabled>Siųsti</button>
+                  <button type="button" id="f-clear" class="btn-clear">Išvalyti</button>
+                </div>
+
+              </div>
+
+              <!-- Pateikti duomenys ir vidurkis -->
+              <div id="form-result" class="form-result" hidden>
+                <h4>Pateikti duomenys</h4>
+                <div id="form-result-data"></div>
+                <p id="form-result-average" class="form-result-average"></p>
               </div>
             </form>
           </div><!-- End Contact Form -->
@@ -723,7 +764,6 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -735,6 +775,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/custom.js"></script>
 
 </body>
 
