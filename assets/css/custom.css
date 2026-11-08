@@ -659,3 +659,358 @@ a:hover {
   color: var(--accent-light);
   font-weight: 500;
 }
+
+/*==============================================================
+  LD10 – CSS animacijos
+==============================================================*/
+
+/*--------------------------------------------------------------
+# 8. Naujos animacijos (@keyframes)
+--------------------------------------------------------------*/
+
+/* 8.1 Socialinių tinklų ikonėlių „linguojantis šuolis“
+   4 būsenos (0%, 30%, 60%, 100%), keičiamos 3 savybės:
+   transform, color ir text-shadow */
+@keyframes socialBounce {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    color: #cdd6d5;
+    text-shadow: none;
+  }
+  30% {
+    transform: translateY(-8px) rotate(-10deg);
+    color: var(--accent-color);
+    text-shadow: 0 0 12px rgba(45, 212, 191, 0.7);
+  }
+  60% {
+    transform: translateY(2px) rotate(8deg);
+    color: var(--accent-light);
+    text-shadow: 0 0 6px rgba(45, 212, 191, 0.4);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    color: #cdd6d5;
+    text-shadow: none;
+  }
+}
+
+.hero .social-links a {
+  display: inline-block;
+  animation: socialBounce 2.8s ease-in-out infinite;
+}
+
+.hero .social-links a:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.hero .social-links a:hover {
+  animation-play-state: paused;
+}
+
+/* 8.2 Pagrindinio mygtuko pulsuojantis švytėjimas */
+@keyframes btnPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(45, 212, 191, 0);
+  }
+}
+
+.hero .btn-cv-primary {
+  animation: btnPulse 2.2s ease-out infinite;
+}
+
+.hero .btn-cv-primary:hover,
+.hero .btn-cv-primary:active {
+  animation: none;
+}
+
+/* 8.3 Nuotraukos rėmelio „kvėpavimas“ skiltyje Apie */
+@keyframes photoGlow {
+  0%, 100% {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(45, 212, 191, 0.06);
+  }
+  50% {
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 0 10px rgba(45, 212, 191, 0.18);
+  }
+}
+
+.about .about-photo img {
+  animation: photoGlow 4s ease-in-out infinite;
+}
+
+/*--------------------------------------------------------------
+# 9. Krovimo indikatorius (Loading Indicator) – tik CSS
+--------------------------------------------------------------*/
+.cv-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+/* Besisukantis apskritimas (spinner) */
+.cv-loader-ring {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid rgba(45, 212, 191, 0.15);
+  border-top-color: var(--accent-color);
+  border-right-color: var(--accent-light);
+  animation: loaderSpin 1s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pulsuojantys taškai (pulsing dots) */
+.cv-loader-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.cv-loader-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  animation: loaderDot 1.2s ease-in-out infinite;
+}
+
+.cv-loader-dots i:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.cv-loader-dots i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes loaderDot {
+  0%, 80%, 100% {
+    transform: scale(0.5);
+    opacity: 0.35;
+  }
+  40% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/*--------------------------------------------------------------
+# 10. Animuoti dekoratyviniai skilčių antraščių pseudo-elementai
+--------------------------------------------------------------*/
+
+/* ::before – kodo žymė „</>“ virš antraštės, plūduriuoja ir mirksi */
+.section-title h2::before {
+  content: "</>";
+  position: absolute;
+  left: 50%;
+  top: -34px;
+  bottom: auto;
+  right: auto;
+  width: auto;
+  height: auto;
+  margin: 0;
+  background: none;
+  font-family: var(--mono-font);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--accent-color);
+  transform: translateX(-50%);
+  animation: titleTagFloat 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes titleTagFloat {
+  0%, 100% {
+    transform: translate(-50%, 0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate(-50%, -6px);
+    opacity: 1;
+  }
+}
+
+/* ::after – apatinė juosta su bėgančiu gradientu ir kintančiu pločiu */
+.section-title h2::after {
+  width: 80px;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent-light), var(--accent-color), var(--accent-dark));
+  background-size: 300% 100%;
+  animation: titleBar 3.5s ease-in-out infinite;
+}
+
+@keyframes titleBar {
+  0% {
+    width: 60px;
+    background-position: 0% 50%;
+  }
+  50% {
+    width: 140px;
+    background-position: 100% 50%;
+  }
+  100% {
+    width: 60px;
+    background-position: 0% 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+# 11. Papildoma: animuotas gradientinis Paslaugų fonas
+--------------------------------------------------------------*/
+.services.section {
+  background: linear-gradient(125deg, #0a0a0a 0%, #052622 30%, #0a0a0a 55%, #071a26 80%, #0a0a0a 100%);
+  background-size: 300% 300%;
+  animation: servicesGradient 16s ease-in-out infinite;
+}
+
+@keyframes servicesGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*--------------------------------------------------------------
+# 12. Papildoma: animuotos CSS figūros skiltyje Apie
+--------------------------------------------------------------*/
+.about.section {
+  position: relative;
+}
+
+.about > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.about-shapes {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-shapes .shape {
+  position: absolute;
+  display: block;
+}
+
+/* Apskritimas – plūduriuoja (floating) */
+.about-shapes .shape-circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-light), var(--accent-dark));
+  opacity: 0.35;
+  top: 70px;
+  left: 3%;
+  animation: shapeFloat 7s ease-in-out infinite;
+}
+
+@keyframes shapeFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(18px, -22px);
+  }
+  50% {
+    transform: translate(-10px, -38px);
+  }
+  75% {
+    transform: translate(-20px, -12px);
+  }
+}
+
+/* Trikampis (iš kraštinių) – sukasi (rotating) */
+.about-shapes .shape-triangle {
+  width: 0;
+  height: 0;
+  border-left: 34px solid transparent;
+  border-right: 34px solid transparent;
+  border-bottom: 58px solid rgba(45, 212, 191, 0.4);
+  top: 120px;
+  right: 4%;
+  animation: shapeRotate 12s linear infinite;
+}
+
+@keyframes shapeRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Kvadratas – didėja ir sukasi (scaling) */
+.about-shapes .shape-square {
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--accent-color);
+  border-radius: 8px;
+  opacity: 0.45;
+  bottom: 80px;
+  left: 6%;
+  animation: shapeScale 5s ease-in-out infinite;
+}
+
+@keyframes shapeScale {
+  0%, 100% {
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.35) rotate(45deg);
+  }
+}
+
+/* Žiedas – plūduriuoja kita kryptimi ir pulsuoja */
+.about-shapes .shape-ring {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 6px solid rgba(94, 234, 212, 0.35);
+  bottom: 60px;
+  right: 7%;
+  animation: ringDrift 8s ease-in-out infinite;
+}
+
+@keyframes ringDrift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-24px, 14px) scale(1.2);
+  }
+  66% {
+    transform: translate(10px, -20px) scale(0.85);
+  }
+}
+
+/*--------------------------------------------------------------
+# 13. Prieinamumas: mažiau judesio, jei vartotojas to prašo
+--------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .hero .social-links a,
+  .hero .btn-cv-primary,
+  .about .about-photo img,
+  .cv-loader-ring,
+  .cv-loader-dots i,
+  .section-title h2::before,
+  .section-title h2::after,
+  .services.section,
+  .about-shapes .shape {
+    animation: none;
+  }
+}
