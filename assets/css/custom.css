@@ -1151,3 +1151,334 @@ a:hover {
   display: flex;
   align-items: flex-end;
 }
+
+/*==============================================================
+  LD12 – Kompetencijų pažangos modulis
+==============================================================*/
+.kompetencijos .kp-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 14px;
+}
+
+/* --- Profilio kortelė --- */
+.kompetencijos .kp-profile {
+  background: var(--surface-color);
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  padding: 28px 26px;
+  text-align: center;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+  position: sticky;
+  top: 24px;
+}
+
+.kompetencijos .kp-avatar {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.5));
+}
+
+.kompetencijos .kp-avatar-pop {
+  animation: avatarPop 0.6s ease;
+}
+
+@keyframes avatarPop {
+  0% { transform: scale(0.7) rotate(-6deg); opacity: 0.4; }
+  60% { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.kompetencijos .kp-level-label {
+  margin: 14px 0 2px;
+  font-family: var(--mono-font);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.kompetencijos .kp-rank {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--accent-light);
+}
+
+.kompetencijos .kp-xp {
+  margin: 4px 0 14px;
+  font-family: var(--heading-font);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #f2fbfa;
+}
+
+/* XP progreso juosta */
+.kompetencijos .kp-progress {
+  height: 14px;
+  border-radius: 999px;
+  background: #1b2423;
+  border: 1px solid var(--border-soft);
+  overflow: hidden;
+}
+
+.kompetencijos .kp-progress-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent-color), var(--accent-light));
+  box-shadow: 0 0 12px rgba(45, 212, 191, 0.55);
+  transition: width 0.6s ease;
+}
+
+.kompetencijos .kp-progress-text {
+  margin: 8px 0 18px;
+  font-family: var(--mono-font);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Statistika */
+.kompetencijos .kp-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  text-align: left;
+}
+
+.kompetencijos .kp-stats li {
+  display: flex;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--border-soft);
+}
+
+.kompetencijos .kp-stats strong {
+  font-family: var(--mono-font);
+  color: var(--accent-light);
+}
+
+.kompetencijos .kp-reset {
+  font-family: var(--heading-font);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: var(--text-muted);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.kompetencijos .kp-reset:hover {
+  color: #ffffff;
+  border-color: var(--accent-color);
+}
+
+/* --- Pasiekimai --- */
+.kompetencijos .kp-achievements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.kompetencijos .kp-achievement {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #111515;
+  transition: all 0.35s ease;
+}
+
+.kompetencijos .kp-achievement i {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.kompetencijos .kp-achievement strong,
+.kompetencijos .kp-achievement small,
+.kompetencijos .kp-achievement-state {
+  display: block;
+  line-height: 1.35;
+}
+
+.kompetencijos .kp-achievement small {
+  color: var(--text-muted);
+}
+
+.kompetencijos .kp-achievement-state {
+  margin-top: 4px;
+  font-family: var(--mono-font);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Neatrakintas pasiekimas – pilkas, permatomas, su spyna */
+.kompetencijos .kp-achievement.is-locked {
+  opacity: 0.55;
+  filter: grayscale(1);
+  border-style: dashed;
+}
+
+.kompetencijos .kp-achievement.is-locked i,
+.kompetencijos .kp-achievement.is-locked .kp-achievement-state {
+  color: #8a9796;
+}
+
+/* Atrakintas pasiekimas – akcento rėmelis ir švytėjimas */
+.kompetencijos .kp-achievement.is-unlocked {
+  border-color: var(--accent-color);
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.16), rgba(45, 212, 191, 0.04));
+  box-shadow: 0 0 18px rgba(45, 212, 191, 0.25);
+}
+
+.kompetencijos .kp-achievement.is-unlocked i,
+.kompetencijos .kp-achievement.is-unlocked .kp-achievement-state {
+  color: var(--accent-color);
+}
+
+/* --- Kanban lenta --- */
+.kompetencijos .kp-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.kompetencijos .kp-column {
+  background: #0f1313;
+  border: 1px solid var(--border-soft);
+  border-radius: 16px;
+  padding: 14px;
+  min-height: 260px;
+}
+
+.kompetencijos .kp-column-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-soft);
+}
+
+.kompetencijos .kp-column[data-status="atlikta"] .kp-column-title {
+  border-bottom-color: var(--accent-color);
+}
+
+.kompetencijos .kp-count {
+  margin-left: auto;
+  min-width: 26px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(45, 212, 191, 0.14);
+  color: var(--accent-light);
+  font-family: var(--mono-font);
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.kompetencijos .kp-card {
+  background: var(--surface-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #64748b;
+  border-radius: 12px;
+  padding: 12px 12px 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  animation: cardIn 0.35s ease;
+}
+
+.kompetencijos .kp-card-mokomasi {
+  border-left-color: #f59e0b;
+}
+
+.kompetencijos .kp-card-atlikta {
+  border-left-color: var(--accent-color);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.kompetencijos .kp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.kompetencijos .kp-card-title {
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #f2fbfa;
+}
+
+.kompetencijos .kp-card-xp {
+  flex-shrink: 0;
+  font-family: var(--mono-font);
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: rgba(45, 212, 191, 0.12);
+  color: var(--accent-light);
+}
+
+.kompetencijos .kp-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.kompetencijos .kp-status-btn {
+  flex: 1 1 auto;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 4px 6px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: transparent;
+  color: #b9c6c4;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.kompetencijos .kp-status-btn:hover {
+  border-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.kompetencijos .kp-status-btn.is-current {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+  font-weight: 600;
+  cursor: default;
+}
+
+.kompetencijos .kp-empty {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #6f807e;
+}
+
+@media (max-width: 767px) {
+  .kompetencijos .kp-board,
+  .kompetencijos .kp-achievements {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kompetencijos .kp-card,
+  .kompetencijos .kp-avatar-pop {
+    animation: none;
+  }
+}

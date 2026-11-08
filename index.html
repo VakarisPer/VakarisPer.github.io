@@ -51,6 +51,7 @@
       <ul>
         <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i><span>Pagrindinis</span></a></li>
         <li><a href="#about"><i class="bi bi-person navicon"></i><span>Apie</span></a></li>
+        <li><a href="#kompetencijos"><i class="bi bi-kanban navicon"></i><span>Kompetencijos</span></a></li>
         <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Patirtis</span></a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Darbai</span></a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Paslaugos</span></a></li>
@@ -227,6 +228,67 @@
       </div>
 
     </section><!-- /Skills Section -->
+
+    <!-- Kompetencijų pažangos modulis (LD12) -->
+    <section id="kompetencijos" class="kompetencijos section">
+
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Kompetencijų pažanga</h2>
+        <p>Įgūdžių lenta: perkelkite įgūdį į „Atlikta“ ir rinkite patirties taškus (XP)</p>
+      </div>
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4">
+
+          <!-- Vartotojo profilis: ikonėlė, lygis, rangas, XP ir statistika -->
+          <div class="col-lg-4">
+            <div class="kp-profile">
+              <img id="kp-avatar" class="kp-avatar" src="assets/img/avatar-lvl1.svg" width="160" height="170" alt="Vartotojo ikonėlė – 1 lygis">
+              <p class="kp-level-label">Lygis <span id="kp-level">1</span></p>
+              <h3 id="kp-rank" class="kp-rank">Pradedantysis</h3>
+              <p class="kp-xp"><span id="kp-xp">0</span> XP</p>
+
+              <div class="kp-progress" role="progressbar" aria-label="Progresas iki kito lygio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <div id="kp-progress-bar" class="kp-progress-bar"></div>
+              </div>
+              <p id="kp-progress-text" class="kp-progress-text"></p>
+
+              <ul class="kp-stats">
+                <li><span>Iš viso įgūdžių</span><strong id="kp-total">0</strong></li>
+                <li><span>Atlikta įgūdžių</span><strong id="kp-done">0</strong></li>
+                <li><span>Atlikta procentais</span><strong id="kp-percent">0%</strong></li>
+              </ul>
+
+              <button type="button" id="kp-reset" class="kp-reset"><i class="bi bi-arrow-counterclockwise"></i> Atkurti pradinę būseną</button>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <!-- Pasiekimai (generuojami su JavaScript) -->
+            <h3 class="kp-subtitle">Pasiekimai</h3>
+            <div id="kp-achievements" class="kp-achievements"></div>
+
+            <!-- Įgūdžių lenta (Skill Kanban) – kortelės generuojamos su JavaScript -->
+            <div class="kp-board">
+              <div class="kp-column" data-status="planuojama">
+                <h4 class="kp-column-title"><i class="bi bi-lightbulb"></i> Planuojama <span class="kp-count" data-count="planuojama">0</span></h4>
+                <div class="kp-column-list" data-list="planuojama"></div>
+              </div>
+              <div class="kp-column" data-status="mokomasi">
+                <h4 class="kp-column-title"><i class="bi bi-hourglass-split"></i> Mokomasi <span class="kp-count" data-count="mokomasi">0</span></h4>
+                <div class="kp-column-list" data-list="mokomasi"></div>
+              </div>
+              <div class="kp-column" data-status="atlikta">
+                <h4 class="kp-column-title"><i class="bi bi-check2-circle"></i> Atlikta <span class="kp-count" data-count="atlikta">0</span></h4>
+                <div class="kp-column-list" data-list="atlikta"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section><!-- /Kompetencijų pažangos modulis -->
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
